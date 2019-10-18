@@ -27,11 +27,14 @@ export default {
 				db.collection('messages').add({
 					content: this.message,
 					name: this.name,
-					timestamp: Date.now()
+					timestamp: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a')
 				}).
 				catch((errors)=>{
 					console.log(errors)
 				})
+				this.message = "";
+				this.feedback = "";
+
 			}else{
 				this.feedback = "You cannot send an empty message";
 			}
